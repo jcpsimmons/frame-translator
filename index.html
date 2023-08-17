@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea name="text" id="text" cols="30" rows="10"></textarea>
+    <input type="text" id="input">
+
+    <button id="btn">Click</button>
+
+    output with copy paste button
+    <textarea name="output" id="output" cols="30" rows="10"></textarea>
+    <button id="copy">Copy</button>
+</body>
+<script>
+    //parse json from textarea input then multiply keys by the value of input and return the result
+    const btn = document.getElementById('btn');
+    const copy = document.getElementById('copy');
+    const output = document.getElementById('output');
+    copy.addEventListener('click', () => {
+        output.select();
+        document.execCommand('copy');
+    })
+
+
+
+    btn.addEventListener('click', () => {
+        const text = document.getElementById('text').value;
+        const input = document.getElementById('input').value;
+        const obj = JSON.parse(text);
+        const result = {};
+        for (const key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                const element = obj[key];
+                result[key] = element * input;
+            }
+        }
+        output.value = JSON.stringify(result);
+        
+    })
+</script>
+</html>
