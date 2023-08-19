@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Frame Translator</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin: auto;
+            margin-top: 50px;
+        }
+    </style>
 </head>
-<body>
-    <textarea name="text" id="text" cols="30" rows="10"></textarea>
-    <input type="text" id="input">
 
-    <button id="btn">Click</button>
+<body>
+    <h1>Frame Translator</h1>
+    <textarea name="text" id="text" cols="30" rows="10"></textarea>
+    <label for="text">JSON Prompt Input (in seconds)</label>
+    <input type="text" id="input">
+    <label for="input">Frame Rate</label>
+
+    <button id="btn">Presto Chango</button>
 
     output with copy paste button
     <textarea name="output" id="output" cols="30" rows="10"></textarea>
@@ -25,8 +39,6 @@
         document.execCommand('copy');
     })
 
-
-
     btn.addEventListener('click', () => {
         const text = document.getElementById('text').value;
         const input = document.getElementById('input').value;
@@ -40,7 +52,8 @@
             }
         }
         output.value = JSON.stringify(result);
-        
+
     })
 </script>
+
 </html>
